@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+        button {
+            background-color: #00aaff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 25px;
+            margin-top: 20px;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #007acc;
+            transform: scale(1.1);
+        }
+        #message {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.5;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Floating Particles Background Animation */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 0.5;
+            animation: moveParticles 10s infinite;
+        }
+
+        @keyframes moveParticles {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateX(100vw) translateY(100vh);
+            }
+        }
+
+        /* Adjust particle size and animation */
+        .particle-1 {
+            width: 10px;
+            height: 10px;
+            animation-duration: 15s;
+        }
+        .particle-2 {
+            width: 20px;
+            height: 20px;
+            animation-duration: 12s;
+        }
+        .particle-3 {
+            width: 15px;
+            height: 15px;
+            animation-duration: 18s;
+        }
+
+        /* Mario Character Walking Animation */
+        .mario {
+            position: absolute;
+            bottom: 0;
+            left: -150px;
+            width: 50px;
+            height: 70px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/9/9d/Mario_sprite.png') no-repeat center;
+            background-size: cover;
+            animation: marioWalk 4s steps(10) infinite;
+        }
+
+        @keyframes marioWalk {
+            0% {
+                left: -150px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Pop-up images styles */
+        .pop-up-image {
+            display: none;
+            position: absolute;
+            opacity: 0;
+            animation: popUp 1s forwards;
+            width: 300px;
+            height: 300px;
+            object-fit: contain; /* Ensures the image fits within the 300px box without distortion */
+        }
+
+        @keyframes popUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Position the images in different places */
+        .image-1 { top: 3%; left: 4%; }
+        .image-2 { top: 70%; left: 10%; }
+        .image-3 { top: 12%; left: 76%; }
+        .image-4 { top: 67%; left: 76%; }
+        .image-5 { top: 1%; left: 38%; }
+        .image-6 { top: 66%; left: 43%; }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday, Husni! 🎉</h1>
+    <p>Click the button below to reveal your surprise!</p>
+    <button onclick="revealSurprise()">Reveal Surprise</button>
+    <p id="message">You are the most amazing person, and I feel so lucky to celebrate your special day with you. Love you always, Najwa ❤️</p>
+
+    <!-- Floating Particles -->
+    <div class="particle particle-1" style="top: 10%; left: 10%;"></div>
+    <div class="particle particle-2" style="top: 30%; left: 20%;"></div>
+    <div class="particle particle-3" style="top: 50%; left: 30%;"></div>
+    <div class="particle particle-1" style="top: 70%; left: 50%;"></div>
+    <div class="particle particle-2" style="top: 20%; left: 60%;"></div>
+    <div class="particle particle-3" style="top: 80%; left: 80%;"></div>
+
+    <!-- Mario Character -->
+    <div id="mario" class="mario"></div>
+
+    <!-- Pop-up Images from Local Files -->
+    <img src="images/your-image-1.jpg" alt="Pop-up Image 1" class="pop-up-image image-1">
+    <img src="images/your-image-2.jpg" alt="Pop-up Image 2" class="pop-up-image image-2">
+    <img src="images/your-image-3.jpg" alt="Pop-up Image 3" class="pop-up-image image-3">
+    <img src="images/your-image-4.jpg" alt="Pop-up Image 4" class="pop-up-image image-4">
+    <img src="images/your-image-5.jpg" alt="Pop-up Image 5" class="pop-up-image image-5">
+    <img src="images/your-image-6.jpg" alt="Pop-up Image 6" class="pop-up-image image-6">
+
+    <script>
+        function revealSurprise() {
+            // Show the message
+            const message = document.getElementById("message");
+            message.style.display = "block";
+
+            // Make Mario start walking
+            const mario = document.getElementById("mario");
+            mario.style.animationPlayState = 'running';
+
+            // Show the pop-up images
+            const images = document.querySelectorAll('.pop-up-image');
+            images.forEach((image, index) => {
+                setTimeout(() => {
+                    image.style.display = 'block';
+                }, index * 500); // Delay each image by 500ms
+            });
+        }
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Ceni!</title>
+    <title>Happy Birthday!</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -165,13 +165,16 @@
     <!-- Mario Character -->
     <div id="mario" class="mario"></div>
 
-    <!-- Pop-up Images from Local Files -->
+    <!-- Pop-up Images -->
     <img src="images/your-image-1.jpg" alt="Pop-up Image 1" class="pop-up-image image-1">
     <img src="images/your-image-2.jpg" alt="Pop-up Image 2" class="pop-up-image image-2">
     <img src="images/your-image-3.jpg" alt="Pop-up Image 3" class="pop-up-image image-3">
     <img src="images/your-image-4.jpg" alt="Pop-up Image 4" class="pop-up-image image-4">
     <img src="images/your-image-5.jpg" alt="Pop-up Image 5" class="pop-up-image image-5">
     <img src="images/your-image-6.jpg" alt="Pop-up Image 6" class="pop-up-image image-6">
+
+    <!-- Audio Element -->
+    <audio id="birthday-audio" src="images/Tems - Me & U (Acoustic Version) [ ezmp3.cc ].mp3"></audio>
 
     <script>
         function revealSurprise() {
@@ -190,6 +193,11 @@
                     image.style.display = 'block';
                 }, index * 500); // Delay each image by 500ms
             });
+
+            // Play the audio from 14 seconds to the end
+            const audio = document.getElementById("birthday-audio");
+            audio.currentTime = 14; // Start at 14 seconds
+            audio.play();
         }
     </script>
 </body>
